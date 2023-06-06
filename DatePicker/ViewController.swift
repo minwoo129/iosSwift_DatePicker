@@ -22,8 +22,11 @@ class ViewController: UIViewController {
     }
     
     @objc func updateTime() {
-        lblCurrentTime.text = String(count)
-        count += 1
+        let date = NSDate()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss EEE"
+        lblCurrentTime.text = "현재시간 : " + formatter.string(from: date as Date)
     }
 
     @IBAction func changeDatePicker(_ sender: UIDatePicker) {
@@ -31,7 +34,7 @@ class ViewController: UIViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm EEE"
-        lblPickerTime.text = "선택시간: " + formatter.string(from: datePickerView.date)
+        lblPickerTime.text = "선택시간 : " + formatter.string(from: datePickerView.date)
     }
     
     
